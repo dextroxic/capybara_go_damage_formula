@@ -1,19 +1,6 @@
-Sure! Here's a clean, professional `README.md` template for your project that includes:
-
-* Project purpose
-* Setup and installation
-* How to use
-* Example screenshots section (optional placeholder)
-* Contact
-
----
-
-### ✅ `README.md`
-
-````markdown
 # 🧮 Capybara Go Damage Formula Simulator
 
-This is an interactive simulator for calculating and comparing skill-based damage in a Go-themed RPG-style game. It helps players optimize their builds by allowing detailed stat input, skill usage modeling, and scenario comparison.
+This is an interactive simulator for calculating and comparing skill-based damage in a Go-themed. It helps players optimize their builds by allowing detailed stat input, skill usage modeling, and scenario comparison.
 
 The simulator uses Gradio to provide a clean and interactive web interface where users can:
 
