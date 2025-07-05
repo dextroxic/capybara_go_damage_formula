@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 import seaborn as sns
 
+
 def preprocess_skill_comparison(df_all_skills, source, scenario_1="Scenario 1", scenario_2="Scenario 2"):
     df1 = df_all_skills[
         (df_all_skills["source"] == source) & (df_all_skills["scenario"] == scenario_1)
@@ -184,7 +185,8 @@ def plot_damage_analysis(
     ax_full.legend(title="level", bbox_to_anchor=(1.02, 1), loc="upper left")
 
     plt.tight_layout(rect=[0, 0.03, 1, 0.95])
-    plt.show()
+    return fig
+
 
 def plot_total_cumulative_damage(df_all_rounds, scenario_name_map=None):
     df_final_round = df_all_rounds[df_all_rounds["round"] == 10].copy()
@@ -199,7 +201,10 @@ def plot_total_cumulative_damage(df_all_rounds, scenario_name_map=None):
     df_final_round["label"] = df_final_round["source"] + df_final_round["stacks_label"]
 
     scenarios = df_final_round["scenario"].unique()
-    fig, axs = plt.subplots(nrows=1, ncols=len(scenarios), figsize=(9 * len(scenarios), 6))
+    fig, axs = plt.subplots(
+        nrows=1, ncols=len(scenarios), figsize=(9 * len(scenarios), 6), constrained_layout=True
+    )
+
     axs = [axs] if len(scenarios) == 1 else axs.flatten()
 
     for i, scenario in enumerate(scenarios):
@@ -224,8 +229,7 @@ def plot_total_cumulative_damage(df_all_rounds, scenario_name_map=None):
         ax.legend(title="Adventurer", fontsize=9)
         ax.grid(True)
 
-    plt.tight_layout(rect=[0, 0, 1, 0.92])
-    plt.show()
+    return (fig)
 
 
 def plot_normalized_total_damage(df_all_rounds, scenario_name_map=None):
@@ -300,8 +304,7 @@ def plot_normalized_total_damage(df_all_rounds, scenario_name_map=None):
         ax.legend(title="Skill Level", bbox_to_anchor=(1.02, 1), loc="upper left")
         ax.grid(True)
 
-    plt.tight_layout(rect=[0, 0, 1, 0.95])
-    plt.show()
+    return fig
 
 
 def plot_damage_per_use(df_all_skills, scenario_name_map=None):
@@ -341,8 +344,7 @@ def plot_damage_per_use(df_all_skills, scenario_name_map=None):
         ax.grid(True)
         ax.legend(title="Adventurer", fontsize=9)
 
-    plt.tight_layout()
-    plt.show()
+    return fig
 
 
 def plot_normalized_damage_per_use(df_all_skills, scenario_name_map=None):
@@ -416,5 +418,4 @@ def plot_normalized_damage_per_use(df_all_skills, scenario_name_map=None):
         ax.legend(title="Skill Level", bbox_to_anchor=(1.02, 1), loc="upper left")
         ax.grid(True)
 
-    plt.tight_layout(rect=[0, 0, 1, 0.95])
-    plt.show()
+    return fig

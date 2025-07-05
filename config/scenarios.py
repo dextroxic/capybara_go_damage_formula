@@ -90,32 +90,7 @@ for key in ALL_KEYS:
 # === [2] BASE_CONFIG constructed from defaults ===
 BASE_CONFIG = dict(DEFAULT_VALUES)
 
-
-# === [3] Scenario Definitions using constants ===
-# These are your two stat sheets for comparison
-# SCENARIO_1 = {
-#     "name": "Stat Sheet 1",
-#     Num_Rage_Strikes: 1,
-#     Num_Combos: 1,
-#     Global_Skill_DMG_pct: 0,
-#     Global_DMG_pct: 0,
-#     Skill_DMG_pct: 0,
-# }
-
-# SCENARIO_2 = {
-#     "name": "Stat Sheet 2",
-#     Num_Daggers: 21,
-#     Bonus_Dagger_Coef: 0.09,
-#     Dagger_DMG_pct: 85,
-#     Physical_DMG_pct: 90,
-#     Num_Rage_Strikes: 3,
-#     Damage_pct: 25,
-#     Global_Skill_DMG_pct: 40,
-#     Global_DMG_pct: 30,
-#     Skill_DMG_pct: 200,
-# }
-
-# === [4] Utility Functions ===
+# === [3] Utility Functions ===
 def generate_scenario_name(base_scenario: dict, compare_scenario: dict) -> str:
     """
     Generate a short scenario name showing what config values changed.
