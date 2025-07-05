@@ -5,6 +5,7 @@ Main application file. This runs the simulation, prepares the data,
 and houses the Gradio interface for interactive analysis.
 """
 
+import os
 import pandas as pd
 import gradio as gr
 
@@ -295,4 +296,20 @@ with gr.Blocks() as demo:
 
 
 if __name__ == "__main__":
-    demo.launch()
+    # Optional environment variables to control behavior
+    use_share = os.getenv("SHARE", "false").lower() == "true"
+    use_auth = os.getenv("AUTH", "false").lower() == "true"
+    port = int(os.getenv("PORT", 7860))
+    inbrowser = os.getenv("INBROWSER", "false").lower() == "true"
+
+    launch_kwargs = {
+        "share": use_share,
+        "inbrowser": inbrowser,
+        "server_port": port,
+        "server_name": "0.0.0.0"
+    }
+
+    if use_auth:
+        launch_kwargs["auth"] = [("admin", "mypassword")]
+
+    demo.launch(**launch_kwargs)

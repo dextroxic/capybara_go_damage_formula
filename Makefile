@@ -1,18 +1,15 @@
 # Makefile
-VENV_DIR = venv
-PYTHON = $(VENV_DIR)/bin/python
-PIP = $(VENV_DIR)/bin/pip
+install:
+	python3 -m venv venv && . venv/bin/activate && pip install -r requirements.txt
 
-# Create virtual environment if not exists
-$(VENV_DIR)/bin/activate:
-	python3 -m venv $(VENV_DIR)
+run: # Local dev, no sharing
+	. venv/bin/activate && python app.py
 
-install: $(VENV_DIR)/bin/activate
-	$(PIP) install --upgrade pip
-	$(PIP) install -r requirements.txt
+run-share: # Share link for others to use
+	SHARE=true INBROWSER=true PORT=7861 . venv/bin/activate && python app.py
 
-run: $(VENV_DIR)/bin/activate
-	$(PYTHON) app.py
+run-auth: # Add password protection
+	AUTH=true INBROWSER=true . venv/bin/activate && python app.py
 
-clean:
-	rm -rf $(VENV_DIR)
+run-prod: # Share + auth + specific port
+	SHARE=true AUTH=true PORT=7861 . venv/bin/activate && python app.py
