@@ -158,8 +158,8 @@ def compute_damage_breakdown(skill: str, config: dict, final_atk: float, base_co
 
 def compute_damage(skill: str, config: dict, final_atk: float, base_coef: float = 1.0, extra_mods: list[str] = None) -> float:
     meta = DAMAGE_SKILLS.get(skill, {})
-    local_mods = meta.get("local_mods", [])
-    global_mods = meta.get("global_mods", [])
+    local_mods = list(meta.get("local_mods", []))
+    global_mods = list(meta.get("global_mods", []))
 
     if extra_mods:
         local_mods += [m for m in extra_mods if m not in local_mods]
