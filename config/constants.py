@@ -136,3 +136,37 @@ ALL_KEYS = (
     BONUS_COEF_KEYS + SKILL_COUNT_KEYS + DOT_STACK_KEYS + ENVIRONMENT_KEYS +
     [Final_DMG_pct]
 )
+
+# --- Grouped names for easier reference in UI
+GROUP_SECTIONS = [
+    ("Core Stats", [
+        P_ATK, P_Strength, P_ATK_pct, P_Global_ATK_pct, Rage_ATK_coef,
+        Num_Combos, Num_Basic_Attacks
+    ]),
+    ("Crit Stats", [
+        Crit_Chance_pct, Skill_Crit_Chance_pct, Weapon_Crit_Chance_pct,
+        Basic_Crit_Chance_pct, Crit_DMG_pct
+    ]),
+    ("Local Dmg Mods", [
+        Skill_DMG_pct, Physical_DMG_pct, Dagger_DMG_pct, Bolt_DMG_pct, Chi_DMG_pct,
+        Fire_DMG_pct, Ice_DMG_pct, Lightning_DMG_pct, Basic_ATK_DMG_pct, Combo_DMG_pct,
+        Rage_DMG_pct, Counter_DMG_pct, Poison_DMG_pct, Burn_DMG_pct, Light_Spear_DMG_pct,
+        DoT_DMG_pct, Damage_pct
+    ]),
+    ("Global Dmg Mods", [
+        Global_Skill_DMG_pct, Global_Physical_DMG_pct, Global_Dagger_DMG_pct,
+        Global_Bolt_DMG_pct, Global_Chi_DMG_pct, Global_Fire_DMG_pct, Global_Ice_DMG_pct,
+        Global_Lightning_DMG_pct, Global_Basic_ATK_DMG_pct, Global_Combo_DMG_pct,
+        Global_Rage_DMG_pct, Global_Counter_DMG_pct, Global_Poison_DMG_pct,
+        Global_Burn_DMG_pct, Global_Light_Spear_DMG_pct, Global_DoT_DMG_pct,
+        Global_DMG_pct, Global_Dragon_Flame_DMG_pct 
+    ]),
+    ("Weapon Coef Mods", BONUS_COEF_KEYS),
+    ("Skill Usage Counts", [
+        Num_Daggers, Num_Rage_Strikes, Num_Bolts, Num_Death_Bolts, Num_Chi_Hits,
+        Num_Burns, Num_Poisons, Num_Light_Spears, Num_Icy_Spikes, Num_Counter_Attacks
+    ]),
+    ("Other", [
+        Max_Poison_Stacks, Max_Burn_Stacks, Final_DMG_pct, ENEMY_HP, MAX_HP
+    ])
+]
