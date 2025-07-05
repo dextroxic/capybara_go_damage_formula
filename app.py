@@ -201,6 +201,11 @@ def update_config_preview(*args):
 
     return s1_clean, s2_clean, diff_clean
 
+def copy_s1_to_s2(*values):
+    # values = [val1_s1, val2_s1, ..., valN_s1, val1_s2, val2_s2, ..., valN_s2]
+    mid = len(values) // 2
+    s1_values = values[:mid]
+    return s1_values  # Return S1 values directly to set S2
 
 with gr.Blocks() as demo:
     # Gradio UI setup
@@ -247,6 +252,15 @@ with gr.Blocks() as demo:
             scenario1_code = gr.Code(label="Scenario 1 Config", language="python", interactive=False)
             scenario2_code = gr.Code(label="Scenario 2 Config", language="python", interactive=False)
             scenario_diff_code = gr.Code(label="Scenario Differences", language="python", interactive=False)
+
+    copy_button = gr.Button("⬅️ Copy Scenario 1 → Scenario 2")
+
+    copy_button.click(
+        fn=copy_s1_to_s2,
+        inputs=s1_inputs + s2_inputs,
+        outputs=s2_inputs,
+    )
+
 
     # Attach change listeners to all inputs
     for comp in s1_inputs + s2_inputs:
